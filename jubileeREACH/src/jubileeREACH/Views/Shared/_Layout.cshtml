@@ -1,15 +1,24 @@
-﻿<!DOCTYPE html>
+﻿@* The layout is basically the webpage format when a user/client navigate from page to page. https://docs.microsoft.com/en-us/aspnet/core/mvc/views/layout that's the site
+    for more visual representation of it. It consists for 4 components: Header, Left Navigation, Content, Footer *@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - jubileeREACH</title>
+    <title>@ViewData["Title"] - Jubilee REACH </title>
 
+    @* There are three different environment when developing the website. Development is where we develop first and it shows the errors accordingly.
+        Staging should mirror to Production since its a pre-production. Production is the final version to deploy where many features turn on such as
+        dealing with errors would result into a friendly version of an error page rather than weird text/code that end users won't understand. *@
     <environment names="Development">
+        @* The file location for the dependencies using bootstrap is within the "wwwroot" folder *@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
+        @* The keyword "asp-fallback-href" allows basically the content require to load the page to grab from their local cache browser just in case the
+            website doesn't load and it just crash or goes blank. Here's a website article for further detail upon it. http://www.davepaquette.com/archive/2015/05/06/link-and-script-tag-helpers-in-mvc6.aspx
+            FYI CDN stands for Content Delivery Network just think of it was the car freeway but cars are data traveling to their destination and just get congested/traffic *@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
@@ -27,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">jubileeREACH</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">JubileeReach</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -39,10 +48,11 @@
         </div>
     </div>
     <div class="container body-content">
+        @* The RenderBody() below is used to inject the different html pages within it  *@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - jubileeREACH</p>
+            <p>&copy; 2016 - jubileeReach</p>
         </footer>
     </div>
 
